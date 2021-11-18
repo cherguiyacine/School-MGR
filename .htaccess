@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+Options -Multiviews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_SCHEME}://%{HTTP_HOST}%{REQUEST_URI}#$0 ^:?(.*)/(.*)#(\2)$
+RewriteRule ^(.*)$ index.php?route=$0&base_url=%1 [QSA,L]
+</IfModule>
